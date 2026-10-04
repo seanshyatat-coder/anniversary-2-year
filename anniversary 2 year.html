@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>anniversary 2 year</title>
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff6f3;--card:#ffffff;--ink:#6b5560;--soft:#a58b96;--pink:#f7c8d4;--peach:#fde0cc;--mint:#cfeadf;--lav:#dcd3f2;--sky:#d0e6f5;--line:#f3dfe4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2b2328;--card:#3a2f36;--ink:#f6e6ec;--soft:#c9aab6;--line:#52424b}}
+:root[data-theme="dark"]{--bg:#2b2328;--card:#3a2f36;--ink:#f6e6ec;--soft:#c9aab6;--line:#52424b}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:'Mali','Sarabun',system-ui,sans-serif;display:flex;justify-content:center;overflow-x:hidden}
+.app{width:100%;max-width:440px;min-height:100vh;padding:28px 20px 32px;display:flex;flex-direction:column;position:relative}
+.blob{position:fixed;border-radius:50%;filter:blur(2px);opacity:.55;z-index:0;pointer-events:none}
+.b1{width:220px;height:220px;background:var(--pink);top:-70px;right:-70px}
+.b2{width:180px;height:180px;background:var(--sky);bottom:-60px;left:-60px}
+.page{display:none;flex:1;flex-direction:column;position:relative;z-index:1}
+.page.on{display:flex;animation:in .45s ease}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.page.on{animation:none}}
+.center{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:14px}
+.script{font-family:'Pacifico',cursive;color:#e59ab0;font-size:22px;margin:0}
+h1{margin:0;font-size:30px;line-height:1.3;letter-spacing:.5px;font-weight:700}
+.big{font-size:44px;color:#e59ab0;display:block}
+.sub{color:var(--soft);margin:0;font-size:15px}
+.heart{font-size:54px;animation:beat 1.6s ease-in-out infinite}
+@keyframes beat{50%{transform:scale(1.12)}}
+@media (prefers-reduced-motion:reduce){.heart{animation:none}}
+.card{background:var(--card);border:2px solid var(--line);border-radius:28px;padding:22px;width:100%}
+.dates{display:flex;gap:10px;margin:6px 0 4px;width:100%}
+.dates label{flex:1;font-size:13px;color:var(--soft);text-align:center}
+.dates input{width:100%;margin-top:6px;padding:14px 4px;font:inherit;font-size:20px;text-align:center;border:2px solid var(--line);border-radius:18px;background:var(--bg);color:var(--ink);outline:none}
+.dates input:focus{border-color:#e59ab0}
+.err{min-height:22px;color:#d9708a;font-size:14px;margin:6px 0 0}
+.shake{animation:sh .4s}
+@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.btn{font:inherit;font-weight:600;font-size:17px;border:0;border-radius:999px;padding:14px 26px;cursor:pointer;background:var(--pink);color:#6b3a4a;min-height:50px}
+.btn:active{transform:scale(.97)}
+.btn:focus-visible,input:focus-visible{outline:3px solid #e59ab0;outline-offset:2px}
+.btn.alt{background:var(--card);border:2px solid var(--line);color:var(--ink)}
+.btn.full{width:100%}
+.chip{display:inline-block;padding:6px 16px;border-radius:999px;font-weight:600;font-size:15px;color:#5b4650}
+.emoji{font-size:64px;line-height:1}
+.place{font-size:26px;margin:4px 0 0;line-height:1.35}
+.note{margin:0;color:var(--soft);font-size:15px;line-height:1.7}
+.list{list-style:none;padding:0;margin:0;display:grid;gap:10px;text-align:left;width:100%}
+.list li{background:var(--bg);border-radius:16px;padding:12px 14px;font-size:15px;line-height:1.5}
+.nav{display:flex;gap:12px;margin-top:22px}
+.nav .btn{flex:1}
+.dots{display:flex;justify-content:center;gap:8px;margin-bottom:16px}
+.dots i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.dots i.cur{background:#e59ab0;width:26px;border-radius:10px}
+.travel{background:var(--bg);border:2px dashed var(--line);border-radius:20px;padding:12px 14px;font-size:14px;color:var(--soft);text-align:center;line-height:1.6;margin-top:14px}
+</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div>
+<div class="app" id="app">
+
+<!-- LOCK -->
+<section class="page on" id="p-lock">
+  <div class="center">
+    <div class="heart">💌</div>
+    <p class="script">for my favorite person</p>
+    <div class="card">
+      <p class="sub" style="margin-bottom:12px">ใส่รหัสเพื่อเปิดดูแผนของพรุ่งนี้<br>(วัน / เดือน / ปี)</p>
+      <div class="dates" id="dates">
+        <label>Day<input id="d" inputmode="numeric" maxlength="2" placeholder="DD" autocomplete="off"></label>
+        <label>Month<input id="m" inputmode="numeric" maxlength="2" placeholder="MM" autocomplete="off"></label>
+        <label>Year<input id="y" inputmode="numeric" maxlength="4" placeholder="YYYY" autocomplete="off"></label>
+      </div>
+      <p class="err" id="err" role="alert"></p>
+      <button class="btn full" id="open">เปิดเลย 🎀</button>
+    </div>
+  </div>
+</section>
+
+<!-- HOME -->
+<section class="page" id="p-home">
+  <div class="center">
+    <div class="heart">🎂</div>
+    <h1>1 DAY TRIP<br>BEFORE<br><span class="big">HAPPY ANI<br>2YEAR</span></h1>
+    <p class="sub">แผนเดินทางของเราวันที่ 12 October 2026<br>เริ่มที่แรก: สวนเบญจกิติ ตอน 07:45 ✨</p>
+    <button class="btn" id="start">เริ่มเที่ยวกันเลย 🌸</button>
+  </div>
+</section>
+
+<!-- STOPS (filled by JS) -->
+<section class="page" id="p-stop"></section>
+
+<!-- END -->
+<section class="page" id="p-end">
+  <div class="center">
+    <h1>จบทริปแล้ว<br>แต่เรื่องของเรายังไม่จบ</h1>
+    <p class="sub">ขอบคุณที่อยู่ด้วยกันมา 2 ปีนะ<br>Happy Anniversary</p>
+    <div style="display:flex;gap:12px;width:100%">
+      <button class="btn alt" style="flex:1" id="endBack">← Back</button>
+      <button class="btn" style="flex:1" id="again">ดูใหม่</button>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+const STOPS=[
+ {time:"07:45",title:"สวนเบญจกิติ",emoji:"🌳",color:"var(--mint)",
+  items:["07:45 ถึงสวนเบญจกิติ","08:00 - 10:00 เล่นแบดมินตัน 🏸"],
+  travel:"ต่อไป: เดินประมาณ 1.9 กม. (20-25 นาที) ไป Terminal 21 อโศก"},
+ {time:"10:00 - 12:00",title:"Terminal 21 อโศก",emoji:"🍜",color:"var(--peach)",
+  items:["กินข้าวเที่ยงกัน อิ่มๆ"],
+  travel:"ต่อไป: เรียก Grab/Taxi ประมาณ 5.5 กม. (15-25 นาที)"},
+ {time:"12:30 - 15:00",title:"Theater of Dream Warriors Ice Arena",emoji:"⛸️",color:"var(--sky)",
+  items:["เล่นไอซ์สเก็ตกัน ❄️"],
+  travel:"ต่อไป: ต่อรถไป MRT เพชรบุรี/สุขุมวิท ➔ MRT สามย่าน"},
+ {time:"15:30 - 17:30",title:"สามย่าน มิตรทาวน์",emoji:"📸",color:"var(--lav)",
+  items:["ถ่าย Photo Booth เก็บความทรงจำ 💕"],
+  travel:"ครบทุกที่แล้ว! 🎉"}
+];
+const $=id=>document.getElementById(id);
+const show=id=>{document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));$(id).classList.add('on');window.scrollTo(0,0)};
+let i=0;
+
+function check(){
+  const d=+$('d').value,m=+$('m').value,y=+$('y').value;
+  if(d===24&&m===10&&y===2026){show('p-home')}
+  else{$('err').textContent='รหัสไม่ถูกนะ ลองใหม่อีกครั้ง 🥺';const a=$('dates');a.classList.remove('shake');void a.offsetWidth;a.classList.add('shake')}
+}
+$('open').onclick=check;
+['d','m','y'].forEach((id,k,arr)=>{
+  $(id).addEventListener('input',e=>{
+    e.target.value=e.target.value.replace(/\D/g,'');
+    if(e.target.value.length>=e.target.maxLength&&k<2)$(arr[k+1]).focus();
+  });
+  $(id).addEventListener('keydown',e=>{if(e.key==='Enter')check()});
+});
+
+function render(){
+  const s=STOPS[i];
+  const dots=STOPS.map((_,k)=>`<i class="${k===i?'cur':''}"></i>`).join('');
+  $('p-stop').innerHTML=`
+    <div class="dots">${dots}</div>
+    <div class="card" style="text-align:center">
+      <div class="emoji">${s.emoji}</div>
+      <div class="chip" style="background:${s.color};margin-top:12px">🕒 ${s.time}</div>
+      <h2 class="place">${s.title}</h2>
+      <ul class="list" style="margin-top:14px">${s.items.map(t=>`<li>${t}</li>`).join('')}</ul>
+      <div class="travel">${s.travel}</div>
+    </div>
+    <div class="nav">
+      <button class="btn alt" id="back">← Back</button>
+      <button class="btn" id="next">${i===STOPS.length-1?'Finish 💗':'Next →'}</button>
+    </div>`;
+  $('back').onclick=()=>{if(i===0)show('p-home');else{i--;render()}};
+  $('next').onclick=()=>{if(i===STOPS.length-1)show('p-end');else{i++;render()}};
+  show('p-stop');
+}
+$('start').onclick=()=>{i=0;render()};
+$('endBack').onclick=()=>{i=STOPS.length-1;render()};
+$('again').onclick=()=>show('p-home');
+</script>
+</body>
+</html>
